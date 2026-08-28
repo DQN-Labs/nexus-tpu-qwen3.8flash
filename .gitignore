@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.upstream/
+.venv/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+jax_cache/
+benchmark_results/

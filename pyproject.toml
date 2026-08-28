@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus-flash-next"
+version = "0.1.0"
+description = "Production vLLM-TPU integration for Qwen3.8-Flash-Next"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "NEXUS" }]
+dependencies = [
+  "numpy>=1.26",
+  "jax>=0.4.30",
+  "jaxlib>=0.4.30",
+  "flax>=0.8",
+  "transformers>=4.51",
+  "einops>=0.8",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+tpu = [
+  "libtpu; platform_system != 'Darwin'",
+]
+vllm = [
+  "torch>=2.4",
+  "vllm>=0.28.0",
+]
+
+[project.scripts]
+nexus-register = "nexus.integration.register:main"
+nexus-memory-report = "nexus.memory.planner:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nexus*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

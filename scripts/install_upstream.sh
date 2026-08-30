@@ -76,7 +76,7 @@ clone_or_checkout \
 echo
 echo "Applying NEXUS TPU overlay..."
 
-rsync -a --delete \
+rsync -a \
     "${ROOT}/patches/tpu-inference/" \
     "${BUILD}/tpu-inference/"
 
